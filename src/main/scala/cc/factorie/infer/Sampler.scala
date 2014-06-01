@@ -268,6 +268,7 @@ class IteratedConditionalModes(model:Model, objective:Model = null) extends Sett
 
 object MaximizeByIteratedConditionalModes extends Maximize[Iterable[MutableDiscreteVar], Model] {
   def infer(variables: Iterable[MutableDiscreteVar], model: Model, marginalizing: Summary) = {
+    if (marginalizing ne null) throw new Error("Marginalizing case not yet implemented.")
     val icm = new IteratedConditionalModes(model)
     val d0 = icm.processAll(variables, returnDiffs = true)
     val d1 = icm.processAll(variables, returnDiffs = true)
