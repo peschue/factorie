@@ -26,6 +26,8 @@ import scala.reflect.ClassTag
     to attach a ParseTree to a Sentence, and coreference information to a Document.
     
     Basic example usage: object foo extends Attr; foo.attr += "bar"; require(foo.attr[String] == "bar"); foo.attr.remove[String].
+
+    Adding an attribute of the same type twice replaces the first instance; foo.attr += "bar"; foo.attr += "baz" has stored only "baz" for foo.attr[String]
     
     @author Andrew McCallum */
 trait Attr {
