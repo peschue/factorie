@@ -82,11 +82,11 @@ class LoadGermeval2014 extends Load with FastLogging {
     val token = new Token(sentence, word)
     encoding match {
       case "BIO" => {
-        token.attr += new LabeledLvl1BioGermevalNerTag(token, ner1gold)
-        token.attr += new LabeledLvl2BioGermevalNerTag(token, ner2gold) }
+        if (ner1gold != "-") token.attr += new LabeledLvl1BioGermevalNerTag(token, ner1gold)
+        if (ner2gold != "-") token.attr += new LabeledLvl2BioGermevalNerTag(token, ner2gold) }
       case "BILOU" => {
-        token.attr += new LabeledLvl1BilouGermevalNerTag(token, ner1gold)
-        token.attr += new LabeledLvl2BilouGermevalNerTag(token, ner2gold) }
+        if (ner1gold != "-") token.attr += new LabeledLvl1BilouGermevalNerTag(token, ner1gold)
+        if (ner2gold != "-") token.attr += new LabeledLvl2BilouGermevalNerTag(token, ner2gold) }
     }
     token
   }
